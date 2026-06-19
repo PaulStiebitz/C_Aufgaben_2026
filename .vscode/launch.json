@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/paul-gregorstiebitz/Desktop/DHBW_Bachelor/1. Semester/Programmieren_C_Holz/C_Klausur_Aufgaben/02_custom_library_string",
+      "program": "/Users/paul-gregorstiebitz/Desktop/DHBW_Bachelor/1. Semester/Programmieren_C_Holz/C_Klausur_Aufgaben/02_custom_library_string/build/Debug/outDebug"
+    }
+  ]
+}
