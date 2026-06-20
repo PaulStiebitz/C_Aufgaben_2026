@@ -3,11 +3,22 @@
   "configurations": [
     {
       "name": "C/C++ Runner: Debug Session",
-      "type": "lldb",
+      "type": "cppdbg",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/paul-gregorstiebitz/Desktop/DHBW_Bachelor/1. Semester/Programmieren_C_Holz/C_Klausur_Aufgaben/02_custom_library_string",
-      "program": "/Users/paul-gregorstiebitz/Desktop/DHBW_Bachelor/1. Semester/Programmieren_C_Holz/C_Klausur_Aufgaben/02_custom_library_string/build/Debug/outDebug"
+      "stopAtEntry": false,
+      "externalConsole": true,
+      "cwd": "c:/Users/Der Grinder/Desktop/DHBW/C_Aufgaben_2026/05_custom_library_linkedlist",
+      "program": "c:/Users/Der Grinder/Desktop/DHBW/C_Aufgaben_2026/05_custom_library_linkedlist/build/Debug/outDebug",
+      "MIMode": "gdb",
+      "miDebuggerPath": "C:/MinGW/bin/gdb.exe",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ]
     }
   ]
 }
