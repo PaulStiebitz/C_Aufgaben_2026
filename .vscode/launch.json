@@ -8,10 +8,10 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/Der Grinder/Desktop/DHBW/C_Aufgaben_2026/05_custom_library_linkedlist",
-      "program": "c:/Users/Der Grinder/Desktop/DHBW/C_Aufgaben_2026/05_custom_library_linkedlist/build/Debug/outDebug",
+      "cwd": "c:/Users/Der Grinder/Desktop/DHBW/C_Aufgaben_2026",
+      "program": "c:/Users/Der Grinder/Desktop/DHBW/C_Aufgaben_2026/build/Debug/outDebug",
       "MIMode": "gdb",
-      "miDebuggerPath": "C:/MinGW/bin/gdb.exe",
+      "miDebuggerPath": "gdb",
       "setupCommands": [
         {
           "description": "Enable pretty-printing for gdb",

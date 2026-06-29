@@ -1,67 +1,10 @@
 #include <stdio.h>
 
-
 void printArr(int *arr, int length) {
     for(int i = 0; i < length; i++) {
         printf("%d ", arr[i]);
     }
     printf("\n");
-}
-
-void quicksort(int *arr, int left, int right) {
-    if(left < right) {
-        int low = left - 1;
-        int pivot = arr[right];
-        for(int i = left; i < right; i++) {
-            if(arr[i] <= pivot) {
-                low++;
-                int tmp = arr[low];
-                arr[low] = arr[i];
-                arr[i] = tmp;
-            }
-        }
-
-        int tmp = arr[low + 1];
-        arr[low + 1] = pivot;
-        arr[right] = tmp;
-
-        int pivot_pos = low + 1;
-        quicksort(arr, left, pivot_pos - 1);
-        quicksort(arr, pivot + 1, right);
-    }
-}
-
-void merge(int *arr, int left, int mid, int right) {
-    int leftindex = left;
-    int rightindex = mid + 1;
-
-    while(leftindex <= mid && rightindex <= right) {
-        if(arr[leftindex] <= arr[rightindex]) {
-            leftindex++;
-        } else {
-            int tmp = arr[rightindex];
-            int k = rightindex;
-
-            while(k > leftindex) {
-                arr[k] = arr[k-1];
-                k--;
-            }
-
-            arr[leftindex] = tmp;
-            leftindex++;
-            mid++;
-            rightindex++;
-        }
-    }
-}
-
-void mergeSort(int *arr, int left, int right) {
-    if(arr != NULL && left < right) {
-        int mid = (left + right) / 2;
-        mergeSort(arr, left, mid);
-        mergeSort(arr, mid + 1, right);
-        merge(arr, left, mid, right);
-    }
 }
 
 void swap(int *a, int *b) {
@@ -97,23 +40,77 @@ void buildHeap(int *arr, int length) {
 }
 
 void heapSort(int *arr, int length) {
-    if(arr == NULL || length <= 0) {
-        return;
-    }
+    if(arr != NULL && length > 1) {
+        buildHeap(arr, length);
 
-    buildHeap(arr, length);
-    for(int end = length - 1; end > 0; end--) {
-        swap(&arr[0], &arr[end]);
-        heapify(arr, end, 0);
+        for(int end = length - 1; end > 0; end--) {
+            swap(&arr[0],&arr[end]);
+            heapify(arr, end, 0);
+        }
+    } 
+}
+
+void quicksort(int *arr, int left, int right) {
+    if(left < right) {
+        int pivot = arr[right];
+        int low = left - 1;
+
+        for(int i = left; i < right; i++) {
+            if(arr[i] <= pivot) {
+                low++;
+                int value = arr[low];
+                arr[low] = arr[i];
+                arr[i] = value;
+            }
+        }
+
+        int tmp = arr[low + 1];
+        arr[low + 1] = arr[right];
+        arr[right] = tmp;
+
+        int pivotPos = low + 1;
+        quicksort(arr, left, pivotPos - 1);
+        quicksort(arr, pivotPos + 1, right);
+    }
+}
+
+void merge(int *arr, int left, int mid, int right) {
+    int leftindex = left;
+    int rightindex = mid + 1;
+
+    while(leftindex <= mid && rightindex <= right) {
+        if(arr[leftindex] < arr[rightindex]) {
+            leftindex++;
+        } else {
+            int tmp = arr[rightindex];
+            int k = rightindex;
+
+            while(k > leftindex) {
+                arr[k] = arr[k-1];
+                k--;
+            }
+
+            arr[leftindex] = tmp;
+            leftindex++;
+            mid++;
+            rightindex++;
+        }
+    }
+}
+
+void mergeSort(int *arr, int left, int right) {
+    if(arr != NULL && left < right) {
+        int mid = (left + right) / 2;
+        mergeSort(arr, left, mid);
+        mergeSort(arr, mid+1, right);
+        merge(arr, left, mid, right);
     }
 }
 
 void bubbleSort(int *arr, int length) {
-    int swapped = 0;
     int end = length;
-
     for(int i = 0; i < length; i++) {
-        swapped = 0;
+        int swapped = 0;
         for(int j = 0; j < end - 1; j++) {
             if(arr[j] > arr[j+1]) {
                 int tmp = arr[j];
@@ -124,20 +121,20 @@ void bubbleSort(int *arr, int length) {
         }
 
         if(swapped == 0) {
-                return;
+            return;
         }
         end--;
     }
 }
 
-void insertionSort(int *arr, int length) {
+void insertionSort(int *arr, int length) {  
     for(int i = 0; i < length; i++) {
         int k = i;
 
         while(k > 0 && arr[k-1] > arr[k]) {
-            int tmp = arr[k-1];
-            arr[k-1] = arr[k];
-            arr[k] = tmp;
+            int tmp = arr[k];
+            arr[k] = arr[k-1];
+            arr[k-1] = tmp;
             k--;
         }
     }
@@ -145,7 +142,7 @@ void insertionSort(int *arr, int length) {
 
 void selectionSort(int *arr, int length) {
     for(int i = 0; i < length; i++) {
-        int smallest = arr[i];
+        int smallest = i;
         for(int j = i; j < length; j++) {
             if(arr[j] < arr[smallest]) {
                 smallest = j;
@@ -164,8 +161,8 @@ int main(void) {
     //insertionSort(arr, 6);
     //bubbleSort(arr, 6);
     //mergeSort(arr, 0, 5);
-    //heapSort(arr, 6);
-    quicksort(arr, 0, 5);
+    heapSort(arr, 6);
+    //quicksort(arr, 0, 5);
     printArr(arr, 6);
     return 0;
 }
