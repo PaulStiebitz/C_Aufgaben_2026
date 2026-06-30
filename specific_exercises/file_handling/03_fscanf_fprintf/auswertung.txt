@@ -1,0 +1,3 @@
+Summe: 10.00
+Anzahl: 5
+Durchschnitt: 2.00

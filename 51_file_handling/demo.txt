@@ -1,0 +1,4 @@
+Zeile 1: Apfel
+Zeile 2: Banane
+Zeile 3: Kirsche
+Zeile 4: 42 Stueck
